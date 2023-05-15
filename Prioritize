@@ -1,0 +1,23 @@
+function prioritize(arr, callback) {
+  var trueArr = [];
+  var falseArr = [];
+  for (var i = 0; i < arr.length; i++) {
+    if (callback(arr[i])) {
+      trueArr.push(arr[i]);
+    } else {
+      falseArr.push(arr[i]);
+    }
+  }
+  return trueArr.concat(falseArr);
+}
+
+
+const words = ['apple', 'banana', 'orange'];
+const hasLetterA = word => word.includes('a');
+const prioritizedWords = prioritize(words, hasLetterA);
+console.log(prioritizedWords); // Expected output: ['apple', 'banana', 'orange']
+
+const numbers = [10, 20, 30, 40, 50];
+const isGreaterThanThirty = number => number > 30;
+const prioritizedNumbers = prioritize(numbers, isGreaterThanThirty);
+console.log(prioritizedNumbers); // Expected output: [40, 50, 10, 20, 30]
